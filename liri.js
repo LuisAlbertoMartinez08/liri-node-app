@@ -1,17 +1,18 @@
 var Twitter = require('twitter');var twitterKey = require('./keys.js');
-
-var Twitter = require('twitter');
- 
 var client = new Twitter({
-  consumer_key: 'dhUdsSrmTCsTcREiVLobwcciC',
-  consumer_secret: 'SOgYzOhuWVDgojoTSpTYBzMcpgMN7T7xq2XydDzR7wKzTudsLC',
-  access_token_key: '808005943602675712-mdAsjQ6vDP50GpoAt9oVZfIhMsw77P0',
-  access_token_secret: 't5e9WTrbaqDRByQZ6mHkMw7EksImRRSaAC4URmR7bekkQ'
+  consumer_key: twitterKey.twitterKeys.consumer_key,
+  consumer_secret: twitterKey.twitterKeys.consumer_secret,
+  access_token_key: twitterKey.twitterKeys.access_token_key,
+  access_token_secret: twitterKey.twitterKeys.access_token_secret
 });
  
-var params = {screen_name: 'nodejs'};
+var params = {screen_name:'one2code',count:20};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
-    console.log(tweets);
+  	for (var i = 0; i < tweets.length; i++) {
+  		console.log(tweets[i].text);
+  	}
+    
   }
+
 });
